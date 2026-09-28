@@ -6,6 +6,11 @@ rom/
 # Textes extraits de la ROM : régénérables avec outils/extraire.py
 donnees/*_en.json
 
+# Fichiers régénérables : références PokéAPI (voir README) et glossaire calculé
+donnees/reference/
+donnees/glossaire.json
+docs/verification.md
+
 # Python
 __pycache__/
 *.pyc

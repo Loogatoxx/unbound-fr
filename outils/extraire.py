@@ -245,7 +245,33 @@ def extraire_textes(rom, zones_exclues):
         })
     for i, t in enumerate(textes):
         t["id"] = f"T{i:05d}"
+    marquer_familles(rom, textes)
     return textes
+
+
+def marquer_familles(rom, textes, taille_min=4):
+    """Rattache chaque texte à sa « famille » : la table de pointeurs qui le contient.
+
+    Une table de pointeurs (ex. les descriptions d'attaques) est une suite de
+    pointeurs alignés, rangés côte à côte, qui mènent tous à du texte. Tous les
+    textes d'une même table s'affichent dans la même fenêtre : la famille sert
+    donc ensuite à connaître la largeur de fenêtre disponible.
+    """
+    fiables = {int(t["adresse"], 16) for t in textes if t["confiance"] != "basse"}
+    famille_de_pointeur, debut = {}, None
+    nb_mots = len(rom) // 4
+    for i in range(nb_mots + 1):
+        vise_texte = i < nb_mots and int.from_bytes(rom[4 * i:4 * i + 4], "little") - BASE_ROM in fiables
+        if vise_texte and debut is None:
+            debut = i
+        elif not vise_texte and debut is not None:
+            if i - debut >= taille_min:
+                for j in range(debut, i):
+                    famille_de_pointeur[4 * j] = hex(4 * debut)
+            debut = None
+    for t in textes:
+        familles = {famille_de_pointeur[int(p, 16)] for p in t["pointeurs"] if int(p, 16) in famille_de_pointeur}
+        t["famille"] = min(familles) if familles else None
 
 
 def chevauchements(textes):
