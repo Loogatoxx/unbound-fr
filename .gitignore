@@ -1,0 +1,15 @@
+# ROM du jeu : fichier protégé, ne jamais la publier (on ne diffuse qu'un patch)
+rom/
+*.gba
+*.sav
+
+# Textes extraits de la ROM : régénérables avec outils/extraire.py
+donnees/*_en.json
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+# macOS
+.DS_Store
