@@ -1,5 +1,12 @@
 # unbound-fr — traduction française de Pokémon Unbound
 
+![Python](https://img.shields.io/badge/Python-3-3776AB?style=flat-square&logo=python&logoColor=white)
+![Built with Claude Code](https://img.shields.io/badge/Built%20with-Claude%20Code-D97757?style=flat-square)
+![Licence: MIT](https://img.shields.io/badge/Licence-MIT-1a4d7a?style=flat-square)
+
+> Projet de fan, non affilié à Nintendo, Game Freak ou The Pokémon Company, ni aux auteurs de Pokémon Unbound.
+> **Aucune ROM n'est fournie** : il faut posséder sa propre copie. Ce dépôt ne contient que des outils et des traductions.
+
 Outils pour traduire la ROM GBA de Pokémon Unbound (hack de Rouge Feu, moteur CFRU)
 en français, en respectant les limites mémoire de la cartouche (32 Mo).
 
@@ -68,3 +75,7 @@ Diffusion : uniquement sous forme de patch, jamais la ROM.
   espace avant ! ? : ; comme dans les jeux Pokémon français. `--reformater` corrige tout seul.
 - Ce qui dépasse sa place en mémoire est abrégé selon des règles fixes (voir
   `docs/glossaire_bilan.md`), jamais coupé au hasard.
+
+## Licence
+
+Outils sous licence [MIT](LICENSE). Pokémon et Pokémon Unbound appartiennent à leurs détenteurs respectifs.
